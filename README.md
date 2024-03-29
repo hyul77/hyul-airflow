@@ -11,7 +11,9 @@
 
 
 ###  V1
-![image](https://github.com/hyul77/hyul-airflow/assets/100561170/75c34ae7-6ea0-4219-9b1f-8cc33265a489)
+![image](https://github.com/hyul77/hyul-airflow/assets/100561170/cb9182e6-c23f-488d-a3d1-7edb282952a6)
+
+![image](https://github.com/hyul77/hyul-airflow/assets/100561170/94b83ecf-395e-4764-813b-f1b2fb0bbc0b)
 
 
 
