@@ -1,0 +1,12 @@
+version: '3'
+services:
+  airflow:
+    build: .
+    restart: always
+    ports:
+      - "8080:8080"
+    command: standalone
+    volumes:
+      - ./dags:/opt/airflow/dags
+    environment:
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'False'
