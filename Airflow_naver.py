@@ -145,6 +145,7 @@ def scrape_naver_reviews_function():
             engine = create_engine('mysql://hyul:ektmftkfkd231210@172.20.51.1/mydata')
             # DataFrame을 MySQL 데이터베이스 테이블로 저장
             df.to_sql('review2', con=engine, if_exists='append', index=False)
+            engine.dispose()
         else:
             print("해당 음식점에는 어제의 리뷰가 없습니다.")
         
