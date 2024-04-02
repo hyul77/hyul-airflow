@@ -3,3 +3,4 @@ sqlalchemy==1.4.50
 apache-airflow[cncf.kubernetes]
 pymysql
 mysqlclient
+tqdm

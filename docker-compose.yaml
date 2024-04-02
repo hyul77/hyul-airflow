@@ -1,12 +1,35 @@
 version: '3'
 services:
-  airflow:
+  airflow_webserver:
     build: .
     restart: always
     ports:
-      - "8080:8080"
-    command: standalone
+      - "9090:8080"
+    command: ["bash", "-c", "airflow db init && airflow webserver"]
     volumes:
       - ./dags:/opt/airflow/dags
+      - ./requirements.txt:/requirements.txt
     environment:
       AIRFLOW__CORE__LOAD_EXAMPLES: 'False'
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: 'mysql://hyul:ektmftkfkd231210@mysql_db/mydata'
+    depends_on:
+      - mysql_db
+
+  scheduler:
+    image: apache/airflow:2.8.4
+    restart: always
+    command: ["bash", "-c", "airflow scheduler"]
+    environment:
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'False'
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: 'mysql://hyul:ektmftkfkd231210@mysql_db/mydata'
+    depends_on:
+      - mysql_db
+
+  mysql_db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'mydata'
+      MYSQL_USER: 'hyul'
+      MYSQL_PASSWORD: 'ektmftkfkd231210'
